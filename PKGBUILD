@@ -13,8 +13,7 @@ package() {
     tar -xvf data.tar.gz -C $pkgdir
     rm -r $pkgdir/usr/share/doc
     ln -s /usr/lib/liblua.so.5.1 $pkgdir/usr/lib/liblua5.1.so.0
-    install -Dm644 $pkgdir/usr/share/icons/hicolor/scalable/apps/openra.svg $pkgdir/usr/share/pixmaps/$pkgname.svg
-    rm -r $pkgdir/usr/share/icons
-    cd $pkgdir/usr && mv games bin
+    find ${pkgdir}/usr/share/icons -type d -exec chmod 755 {} \;
+    mv $pkgdir/usr/games $pkgdir/usr/bin
     }
 
